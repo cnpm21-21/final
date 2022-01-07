@@ -70,16 +70,12 @@
                     <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link active  ">
+                        <a href="home.php" class="nav-link active ">
                             <i class="fas fa-tachometer-alt"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <!-- <a href="#" class="nav-link active">
-              <i class="fas fa-users"></i>
-              <p>Khách hàng</p>
-            </a> -->
                         <a href="#" class="nav-link">
                             <i class="fas fa-users"></i>
                             <p>
@@ -89,13 +85,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
+                                <a href="member_list.php" class="nav-link">
                                     <i class="fas fa-list"></i>
                                     <p>Member List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="add_member.php" class="nav-link">
                                     <i class="fas fa-user-plus"></i>
                                     <p>Add member</p>
                                 </a>
@@ -106,12 +102,6 @@
                         <a href="#" class="nav-link">
                             <i class="fas fa-money-check-alt"></i>
                             <p>Thanh toán</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-calendar-check"></i>
-                            <p>Plans</p>
                         </a>
                     </li>
 
@@ -133,8 +123,33 @@
                             </li>
                             <li class="nav-item">
                                 <a href="./index2.html" class="nav-link">
-                                    <i class="fas fa-user-plus"></i>
+                                    <i class="fas fa-plus"></i>
                                     <p>Add packages</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- quản lí trainer/PT -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-clock"></i>
+                            <p>
+                                Time slots
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="./index.html" class="nav-link">
+                                    <i class="fas fa-list"></i>
+                                    <p>Time slot List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./index2.html" class="nav-link">
+                                    <i class="fas fa-plus"></i>
+                                    <p>Add time slot</p>
                                 </a>
                             </li>
                         </ul>
@@ -163,6 +178,13 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-file-alt"></i>
+                            <p>Report</p>
+                        </a>
                     </li>
 
                     <!-- quản lí nhân viên -->

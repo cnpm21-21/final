@@ -4,7 +4,19 @@
   <div class="wrapper">
 
     <!-- navbar và header -->
-    <?php include("navbar.php") ?>
+    <?php
+    include("navbar.php");
+    require_once("connect_db.php");
+
+    $sql = "SELECT COUNT(*) as user FROM users";
+    $sql2 = "SELECT COUNT(*) as trainer FROM trainer";
+    $sql3 = 'SELECT SUM(package_price) AS total FROM users join package p on p.package_id = users.user_package';
+
+    $result = connection()->query($sql);
+    $result2 = connection()->query($sql2);
+    $result3 = connection()->query($sql3);
+
+    ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -31,9 +43,10 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
-
-                  <p>New Orders</p>
+                  <h3>
+                  <?= $result3->fetch_array()['total'] ?>
+                  </h3>
+                  <p>Total price</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-bag"></i>
@@ -42,27 +55,27 @@
               </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
+            <!-- <div class="col-lg-3 col-6">
+              small box
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                  <p>Bounce Rate</p>
+                  <h3>555</sup></h3>
+                  <p>User Registrations</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
-            </div>
+            </div> -->
             <!-- ./col -->
             <div class="col-lg-3 col-6">
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
-
+                  <h3>
+                    <?= $result->fetch_array()['user'] ?>
+                  </h3>
                   <p>User Registrations</p>
                 </div>
                 <div class="icon">
@@ -76,9 +89,10 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
-
-                  <p>Unique Visitors</p>
+                  <h3>
+                    <?= $result2->fetch_array()['trainer'] ?>
+                  </h3>
+                  <p>Trainer</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-pie-graph"></i>
