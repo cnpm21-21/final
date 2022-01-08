@@ -6,6 +6,6 @@ if(!isset($_SESSION['username'])){
 	header("location: dashboard/login.php");
 }
 else {
-  	header("location: dashboard/dashboard.php");
+  	header("location: dashboard/home.php");
 }
 ?>

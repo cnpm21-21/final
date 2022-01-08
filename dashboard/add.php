@@ -8,7 +8,7 @@ if (isset($_POST['register_btn'])) {
     userRegister();
 }
 
-if (isset($_POST['btn_add'])) {
+if (isset($_POST['add_package'])) {
     addPackage();
 }
 if (isset($_POST['btn_time'])) {
@@ -50,7 +50,7 @@ function userRegister()
     $res = connection()->query($sql);
 
     //  if(! $retval ) {
-    //     die('Could not get data: ' . mysql_error());
+    //     die('Could not get data: ' . $conn->error);
     //  }       // get id of the created user
     //$logged_in_user_id = mysqli_insert_id($db);
 
@@ -61,22 +61,23 @@ function userRegister()
 
 function addPackage()
 {
-    date_default_timezone_set("Asia/Kolkata");
-    $package_name    =  $_POST['package_name'];
-    $package_price    =  $_POST['package_price'];
-    $package_validity    =  $_POST['package_validity'];
-    $package_cdate =              date("m/d/yy");
-    require_once 'db.php';
+    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    $package_name = $_POST['packageName'];
+    $package_price = $_POST['packagePrice'];
+    $package_validity = $_POST['package_validity'];
+    $package_cdate = date("m/d/yy");
+    require_once 'connect_db.php';
     $sql = "INSERT INTO package(package_name, package_price, package_validity, package_cdate) VALUES ('$package_name', '$package_price', '$package_validity','$package_cdate');";
-    $retval = mysqli_query($conn, $sql);
+    $conn = connection();
+    $conn->query($sql);
 
-    //  if(! $retval ) {
-    //     die('Could not get data: ' . mysql_error());
-    //  }   
-    //array_push($errors, "Wrong username/password combination");
+     if($conn->affected_rows != 1) {
+        die('Could not get data: ' . $conn->error);
+     }   
+
     session_start();
     $_SESSION['success_message'] = "Contact form saved successfully.";
-    header('location: package-list.php');
+    header('location: package_list.php');
 }
 
 function addTimeslote()
@@ -89,7 +90,7 @@ function addTimeslote()
     $retval = mysqli_query($conn, $sql);
 
     //  if(! $retval ) {
-    //     die('Could not get data: ' . mysql_error());
+    //     die('Could not get data: ' . $conn->error);
     //  }   
 
     header('location: timeslote-list.php');
@@ -112,7 +113,7 @@ function addTrainer()
     $retval = mysqli_query($conn, $sql);
 
     //  if(! $retval ) {
-    //     die('Could not get data: ' . mysql_error());
+    //     die('Could not get data: ' . $conn->error);
     //  }   
 
     header('location: trainer-list.php');

@@ -31,9 +31,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Full Name</th>
-                                            <th>Email</th>
-                                            <th>Gender</th>
+                                            <th>Package Name</th>
+                                            <th>Package Price</th>
+                                            <th>Package Validity</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -41,18 +41,18 @@
                                     <tbody>
                                         <?php
                                         require_once("connect_db.php");
-                                        $sql = "SELECT * FROM users WHERE user_status = 1 ";
+                                        $sql = "SELECT * FROM package";
                                         $res = connection()->query($sql);
-                                        // user row
+                                        // package row
                                         while ($row = $res->fetch_assoc()) {
                                         ?>
                                             <tr>
-                                                <td><?= $row['user_id'] ?></td>
-                                                <td><?= $row['user_fname'] ?></td>
-                                                <td><?= $row['user_email'] ?></td>
-                                                <td><?= $row['user_contact'] ?></td>
-                                                <td><a href="edit_member.php?id=<?= $row['user_id'] ?>" class="btn btn-info btn-flat">Edit</a></td>
-                                                <td><a onClick="return confirm('Delete This account?')" href="delete.php?id=<?= $row['user_id'] ?>" class="btn btn-danger btn-flat">Delete</a></td>
+                                                <td><?= $row['package_id'] ?></td>
+                                                <td><?= $row['package_name'] ?></td>
+                                                <td><?= $row['package_price'] ?></td>
+                                                <td><?= $row['package_validity'] ?></td>
+                                                <td><a href="edit_package.php?id=<?= $row['package_id'] ?>" class="btn btn-info btn-flat">Edit</a></td>
+                                                <td><a onClick="return confirm('Delete This Package?')" href="delete.php?id=<?= $row['package_id'] ?>" class="btn btn-danger btn-flat">Delete</a></td>
                                             </tr>
 
                                         <?php } ?>
@@ -70,8 +70,8 @@
 
     <?php include("footer.php") ?>
     <script>
-      function ConfirmDelete() {
-        if (confirm("Delete Account?"))
-          location.href = 'linktoaccountdeletion';
-      }
+        function ConfirmDelete() {
+            if (confirm("Delete Account?"))
+                location.href = 'linktoaccountdeletion';
+        }
     </script>
