@@ -30,16 +30,16 @@ require_once("check_session.php");
                                     <div class="form-group">
                                         <label for="packageName">Package name</label>
                                         <input type="hidden" class="form-control" name="package_id" value="<?= $row['package_id'] ?>" required>
-                                        <input type="text" class="form-control" value="<?= $row['package_name'] ?>" name="packageName" id="packageName" placeholder="Enter Package Name">
+                                        <input type="text" class="form-control" value="<?= $row['package_name'] ?>" name="packageName" id="packageName" placeholder="Enter Package Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="packagePrice">Package price</label>
-                                        <input type="number" class="form-control" value="<?= $row['package_price'] ?>" name="packagePrice" id="packagePrice" >
+                                        <input type="number" class="form-control" value="<?= $row['package_price'] ?>" name="packagePrice" id="packagePrice" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label>Package Validay</label>
-                                            <select class="form-control" name="package_validity">
+                                            <select class="form-control" name="package_validity" required>
                                                 <option value="30">One Month</option>
                                                 <option value="60">Two Month</option>
                                                 <option value="90">Three Month</option>

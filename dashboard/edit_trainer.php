@@ -32,19 +32,19 @@ require_once("check_session.php");
                                         <div class="form-group">
                                             <label for="trainerFname">First name</label>
                                             <input type="hidden" class="form-control" name="trainer_id" value="<?= $row['trainer_id'] ?>" required>
-                                            <input type="text" class="form-control" name="trainerFname" id="trainerFname" value="<?= $row['trainer_fname'] ?>" placeholder="Enter First Name">
+                                            <input type="text" class="form-control" name="trainerFname" id="trainerFname" value="<?= $row['trainer_fname'] ?>" placeholder="Enter First Name" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="trainerLastname">Last name</label>
-                                            <input type="text" class="form-control" name="trainerLname" id="trainerLname" value="<?= $row['trainer_lname'] ?>" placeholder="Enter Last Name">
+                                            <input type="text" class="form-control" name="trainerLname" id="trainerLname" value="<?= $row['trainer_lname'] ?>" placeholder="Enter Last Name" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" name="trainerEmail" id="trainerEmail" value="<?= $row['trainer_email'] ?>" placeholder="Enter email">
+                                            <input type="email" class="form-control" name="trainerEmail" id="trainerEmail" value="<?= $row['trainer_email'] ?>" placeholder="Enter email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Contact number</label>
-                                            <input type="number" class="form-control" name="trainerContact" id="trainerContact" value="<?= $row['trainer_contact'] ?>" placeholder="Enter contact number">
+                                            <input type="number" class="form-control" name="trainerContact" id="trainerContact" value="<?= $row['trainer_contact'] ?>" placeholder="Enter contact number" required>
                                         </div>
 
                                         <!-- address -->
@@ -55,7 +55,7 @@ require_once("check_session.php");
 
                                         <div class="form-group">
                                             <label for="trainerGender">Gender</label>
-                                            <select class="form-control" name="trainerGender" id="trainerGender">
+                                            <select class="form-control" name="trainerGender" id="trainerGender" required>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                             </select>

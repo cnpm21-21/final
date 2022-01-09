@@ -21,19 +21,19 @@ require_once("check_session.php");
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="trainerFname">First name</label>
-                                            <input type="text" class="form-control" name="trainerFname" id="trainerFname" placeholder="Enter First Name">
+                                            <input type="text" class="form-control" name="trainerFname" id="trainerFname" placeholder="Enter First Name" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="trainerLastname">Last name</label>
-                                            <input type="text" class="form-control" name="trainerLname" id="trainerLastname" placeholder="Enter Last Name">
+                                            <input type="text" class="form-control" name="trainerLname" id="trainerLastname" placeholder="Enter Last Name" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" name="trainerEmail" id="trainerEmail" placeholder="Enter email">
+                                            <input type="email" class="form-control" name="trainerEmail" id="trainerEmail" placeholder="Enter email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Contact number</label>
-                                            <input type="number" class="form-control" name="trainerContact" id="trainerContact" placeholder="Enter contact number">
+                                            <input type="number" class="form-control" name="trainerContact" id="trainerContact" placeholder="Enter contact number" required>
                                         </div>
 
                                         <!-- address -->
@@ -44,7 +44,7 @@ require_once("check_session.php");
 
                                         <div class="form-group">
                                             <label for="trainerGender">Gender</label>
-                                            <select class="form-control" name="trainerGender" id="trainerGender">
+                                            <select class="form-control" name="trainerGender" id="trainerGender" required>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                             </select>
