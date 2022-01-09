@@ -21,11 +21,11 @@ require_once("check_session.php");
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="userFirstname">First name</label>
-                                        <input type="text" class="form-control" name="userFirstname" id="userFirstname" placeholder="Enter First Name">
+                                        <input type="text" class="form-control" name="userFirstname" id="userFirstname" placeholder="Enter First Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="userLastname">Last name</label>
-                                        <input type="text" class="form-control" name="userLastname" id="userLastname" placeholder="Enter Last Name">
+                                        <input type="text" class="form-control" name="userLastname" id="userLastname" placeholder="Enter Last Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="userEmail">Email address</label>
@@ -33,7 +33,7 @@ require_once("check_session.php");
                                     </div>
                                     <div class="form-group">
                                         <label for="userContact">Contact number</label>
-                                        <input type="number" class="form-control" name="userContact" id="userContact" placeholder="Enter contact number">
+                                        <input type="number" class="form-control" name="userContact" id="userContact" placeholder="Enter contact number" required>
                                     </div>
                                     <!-- Date -->
                                     <div class="form-group">
@@ -42,7 +42,7 @@ require_once("check_session.php");
                                     </div>
                                     <div class="form-group">
                                         <label for="userGender">Gender</label>
-                                        <select class="form-control" name="userGender" id="userGender">
+                                        <select class="form-control" name="userGender" id="userGender" required>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -53,7 +53,7 @@ require_once("check_session.php");
                                     require_once("connect_db.php");
                                     $sql = 'SELECT * FROM trainer';
                                     $sql1 = 'SELECT * FROM timeslote';
-                                    $sql2 = 'SELECT * FROM package where package_status = 1';
+                                    $sql2 = 'SELECT * FROM package';
 
                                     $res = connection()->query($sql);
                                     $res1 = connection()->query($sql1);
@@ -135,4 +135,6 @@ require_once("check_session.php");
                 }
             });
         })
+
+
     </script>

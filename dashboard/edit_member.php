@@ -75,9 +75,9 @@ require_once("check_session.php");
                                         <!-- select from db -->
                                         <?php
                                         require_once("connect_db.php");
-                                        $sql = 'SELECT * FROM trainer where trainer_status = 1';
-                                        $sql1 = 'SELECT * FROM timeslote where timeslote_status = 1';
-                                        $sql2 = 'SELECT * FROM package where package_status = 1';
+                                        $sql = 'SELECT * FROM trainer';
+                                        $sql1 = 'SELECT * FROM timeslote';
+                                        $sql2 = 'SELECT * FROM package';
 
                                         $res = connection()->query($sql);
                                         $res1 = connection()->query($sql1);

@@ -21,7 +21,7 @@ require_once("check_session.php");
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="timeslot">Time slot</label>
-                                        <input type="text" class="form-control" name="timeslot" id="timeslot" placeholder="Enter a time">
+                                        <input type="number" min="6" max="20" class="form-control" name="timeslot" id="timeslot" placeholder="Enter a time">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

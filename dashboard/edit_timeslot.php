@@ -31,7 +31,7 @@ require_once("check_session.php");
                                     <div class="form-group">
                                         <label for="timeslot">Time slot</label>
                                         <input type="hidden" class="form-control" name="time_id" value="<?= $row['timeslote_id'] ?>" required>
-                                        <input type="text" class="form-control" value="<?= $row['timeslote_time'] ?>" name="timeslot" id="timeslot" placeholder="Enter a time">
+                                        <input type="number" min="6" max="20"  class="form-control" value="<?= $row['timeslote_time'] ?>" name="timeslot" id="timeslot" placeholder="Enter a time">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

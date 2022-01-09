@@ -20,7 +20,7 @@ function userDelete()
     $user_id = $_REQUEST['id'];
     date_default_timezone_set("Asia/Ho_Chi_Minh");
     $user_udate = date("m/d/yy");
-    require_once 'connect_connect_db.php.php';
+    require_once 'connect_db.php';
     $sql = "DELETE FROM users WHERE user_id = '$user_id' ";
     $conn = connection();
     $conn->query($sql);

@@ -44,7 +44,7 @@ function userRegister()
     $sql = "INSERT INTO users(user_fname, user_lname, user_email, user_gender, user_contact, user_timeslote, user_trainer, user_address, user_package, user_dob, user_cdate,user_joindate) VALUES 
 ('$user_fname', '$user_lname', '$user_email', '$user_gender', '$user_contact', '$user_timeslote', '$user_trainer', '$user_address', '$user_package', '$user_dob','$user_cdate','$user_joindate');";
     //mysqli_query($connect_db, $query);
-    require_once 'connect_connect_db.php';
+    require_once 'connect_db.php';
 
     //$conn=mysqli_connect("localhost", "root", "", "fitness_club");
     $res = connection()->query($sql);
@@ -66,7 +66,7 @@ function addPackage()
     $package_price = $_POST['packagePrice'];
     $package_validity = $_POST['package_validity'];
     $package_cdate = date("m/d/yy");
-    require_once 'connect_connect_db.php';
+    require_once 'connect_db.php';
     $sql = "INSERT INTO package(package_name, package_price, package_validity, package_cdate) VALUES ('$package_name', '$package_price', '$package_validity','$package_cdate');";
     $conn = connection();
     $conn->query($sql);
@@ -83,8 +83,9 @@ function addPackage()
 function addTimeslote()
 {
     date_default_timezone_set("Asia/Ho_Chi_minh");
-    $timeslote_time = $_POST['timeslot'];
+    $timeslote_time = $_POST['timeslot'] < 12 ? $_POST['timeslot'] . "AM" : ($_POST['timeslot'] - 12) . 'PM';
     $timeslote_cdate = date("m/d/Y");
+
     require_once 'connect_db.php';
     $sql = "INSERT INTO timeslote(timeslote_time,timeslote_cdate) VALUES ('$timeslote_time', '$timeslote_cdate');";
     $conn = connection();

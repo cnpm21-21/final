@@ -175,7 +175,7 @@ function updateUser()
 
 
   $sql = "UPDATE users SET user_fname='$user_fname',user_lname='$user_lname',user_email='$user_email',user_gender='$user_gender',user_contact='$user_contact',user_timeslote='$user_timeslote',user_trainer='$user_trainer',user_address='$user_address',user_dob='$user_dob',user_package='$user_package' WHERE user_id = '$user_id'";
-  require_once 'connect_connect_db.php';
+  require_once 'connect_db.php';
   $conn = connection();
   $conn->query($sql);
 
