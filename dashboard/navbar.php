@@ -135,13 +135,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
+                                <a href="timeslot_list.php" class="nav-link">
                                     <i class="fas fa-list"></i>
                                     <p>Time slot List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="add_timeslot.php" class="nav-link">
                                     <i class="fas fa-plus"></i>
                                     <p>Add time slot</p>
                                 </a>
@@ -160,13 +160,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
+                                <a href="trainer_list.php" class="nav-link">
                                     <i class="fas fa-list"></i>
                                     <p>Trainer List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="add_trainer.php" class="nav-link">
                                     <i class="fas fa-user-plus"></i>
                                     <p>Add trainer</p>
                                 </a>

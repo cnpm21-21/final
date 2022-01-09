@@ -93,59 +93,52 @@ function updatePackage()
   header('location: package_list.php');
 }
 
-if (isset($_POST['btn_tupdate'])) {
+if (isset($_POST['edit_trainer'])) {
   updateTrainer();
 }
 
 function updateTrainer()
 {
   $trainer_id = $_POST['trainer_id'];
-  $trainer_fname = $_POST['trainer_fname'];
-  $trainer_lname = $_POST['trainer_lname'];
-  $trainer_email = $_POST['trainer_email'];
-  $trainer_contact = $_POST['trainer_contact'];
-  $trainer_gender = $_POST['trainer_gender'];
-  $trainer_aadhar = $_POST['trainer_aadhar'];
-  $trainer_time_id   = $_POST['trainer_time_id'];
-  $trainer_address   = $_POST['trainer_address'];
+  $trainer_fname = $_POST['trainerFname'];
+  $trainer_lname = $_POST['trainerLname'];
+  $trainer_email = $_POST['trainerEmail'];
+  $trainer_contact = $_POST['trainerContact'];
+  $trainer_gender = $_POST['trainerGender'];
+  $trainer_time   = $_POST['trainerTime'];
+  $trainer_address   = $_POST['trainerAddress'];
 
-  //die();
-
-  $sql = "UPDATE trainer SET trainer_fname= '$trainer_fname', trainer_lname= '$trainer_lname', trainer_email = '$trainer_email',trainer_contact = '$trainer_contact',trainer_gender = '$trainer_gender',trainer_aadhar = '$trainer_aadhar',trainer_time_id = '$trainer_time_id',trainer_address = '$trainer_address' WHERE trainer_id = '$trainer_id' ";
-
-
+  $sql = "UPDATE trainer SET trainer_fname= '$trainer_fname', trainer_lname= '$trainer_lname', trainer_email = '$trainer_email',trainer_contact = '$trainer_contact',trainer_gender = '$trainer_gender',trainer_timeslot = '$trainer_time',trainer_address = '$trainer_address' WHERE trainer_id = '$trainer_id' ";
   require_once 'connect_db.php';
-  $retval = mysqli_query($conn, $sql);
+  $conn = connection();
+  $conn->query($sql);
 
+   if($conn->affected_rows != 1) {
+      die('Could not get data: ' . $conn->error);
+   }       // get id of the created user
 
-  //  if(! $retval ) {
-  //     die('Could not get data: ' . mysql_error());
-  //  }       // get id of the created user
-
-  header('location: trainer-list.php');
+  header('location: trainer_list.php');
 }
-if (isset($_POST['btn_time'])) {
+
+
+if (isset($_POST['update_time'])) {
   updateTime();
 }
 
 function updateTime()
 {
-  $timeslote_id = $_POST['timeslote_id'];
-  $timeslote_time = $_POST['timeslote_time'];
-
-  //die();
-
-  $sql = "UPDATE timeslote SET timeslote_time= '$timeslote_time' WHERE timeslote_id = '$timeslote_id' ";
-
+  $timeslote_id = $_POST['time_id'];
+  $timeslote_time = $_POST['timeslot'];
 
   require_once 'connect_db.php';
-  $retval = mysqli_query($conn, $sql);
+  $sql = "UPDATE timeslote SET timeslote_time= '$timeslote_time' WHERE timeslote_id = '$timeslote_id' ";
+  $conn = connection();
+  $conn->query($sql);
+   if($conn-> affected_rows != 1 ) {
+      die('Could not get data: ' . $conn->error);
+   }       // get id of the created user
 
-  //  if(! $retval ) {
-  //     die('Could not get data: ' . mysql_error());
-  //  }       // get id of the created user
-
-  header('location: timeslote-list.php');
+  header('location: timeslot_list.php');
 }
 
 

@@ -10,7 +10,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title text-bold">Package List</h3>
+                                <h3 class="card-title text-bold">Report List</h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -31,28 +31,26 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Package Name</th>
-                                            <th>Package Price</th>
-                                            <th>Package Validity</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
+                                            <th>Full Name</th>
+                                            <th>Email</th>
+                                            <th>Gender</th>
+                                            <th>Invoice</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         require_once("connect_db.php");
-                                        $sql = "SELECT * FROM package";
+                                        $sql = "SELECT * FROM user";
                                         $res = connection()->query($sql);
-                                        // package row
+                                        // user row
                                         while ($row = $res->fetch_assoc()) {
                                         ?>
                                             <tr>
-                                                <td><?= $row['package_id'] ?></td>
-                                                <td><?= $row['package_name'] ?></td>
-                                                <td><?= $row['package_price'] ?></td>
-                                                <td><?= $row['package_validity'] ?></td>
-                                                <td><a href="edit_package.php?id=<?= $row['package_id'] ?>" class="btn btn-info btn-flat">Edit</a></td>
-                                                <td><a onClick="return confirm('Delete This Package?')" href="delete.php?packid=<?= $row['package_id'] ?>" class="btn btn-danger btn-flat">Delete</a></td>
+                                                <td><?= $row['user_id'] ?></td>
+                                                <td><?= $row['user_fname'] . ' ' . $row['user_lname'] ?></td>
+                                                <td><?= $row['user_email'] ?></td>
+                                                <td><?= $row['user_gender'] ?></td>
+                                                <td><a href="user_invoice.php?id=<?php echo $row['user_id'] ?>" class="btn btn-info btn-flat">Invoice</a></td>
                                             </tr>
 
                                         <?php } ?>
@@ -70,8 +68,8 @@
 
     <?php include("footer.php") ?>
     <script>
-        function ConfirmDelete() {
-            if (confirm("Delete Account?"))
-                location.href = 'linktoaccountdeletion';
-        }
+      function ConfirmDelete() {
+        if (confirm("Delete Account?"))
+          location.href = 'linktoaccountdeletion';
+      }
     </script>

@@ -1,5 +1,5 @@
 <?php
-//require_once 'db.php';
+//require_once 'connect_db.php';
 
 //connect_to_database();
 // call the register() function if register_btn is clicked
@@ -11,7 +11,7 @@ if (isset($_POST['register_btn'])) {
 if (isset($_POST['add_package'])) {
     addPackage();
 }
-if (isset($_POST['btn_time'])) {
+if (isset($_POST['add_time'])) {
     addTimeslote();
 }
 if (isset($_POST['add_trainer'])) {
@@ -21,7 +21,7 @@ if (isset($_POST['add_trainer'])) {
 function userRegister()
 {
     // call these variables with the global keyword to make them available in function
-    global $db, $errors, $username, $email;
+    global $connect_db, $errors, $username, $email;
     date_default_timezone_set("Asia/Ho_Chi_Minh");
     // receive all input values from the form. Call the e() function
     // defined below to escape form values
@@ -43,8 +43,8 @@ function userRegister()
 
     $sql = "INSERT INTO users(user_fname, user_lname, user_email, user_gender, user_contact, user_timeslote, user_trainer, user_address, user_package, user_dob, user_cdate,user_joindate) VALUES 
 ('$user_fname', '$user_lname', '$user_email', '$user_gender', '$user_contact', '$user_timeslote', '$user_trainer', '$user_address', '$user_package', '$user_dob','$user_cdate','$user_joindate');";
-    //mysqli_query($db, $query);
-    require_once 'connect_db.php';
+    //mysqli_query($connect_db, $query);
+    require_once 'connect_connect_db.php';
 
     //$conn=mysqli_connect("localhost", "root", "", "fitness_club");
     $res = connection()->query($sql);
@@ -52,7 +52,7 @@ function userRegister()
     //  if(! $retval ) {
     //     die('Could not get data: ' . $conn->error);
     //  }       // get id of the created user
-    //$logged_in_user_id = mysqli_insert_id($db);
+    //$logged_in_user_id = mysqli_insert_id($connect_db);
 
     //$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
     //$_SESSION['success']  = "You are now logged in";
@@ -66,7 +66,7 @@ function addPackage()
     $package_price = $_POST['packagePrice'];
     $package_validity = $_POST['package_validity'];
     $package_cdate = date("m/d/yy");
-    require_once 'connect_db.php';
+    require_once 'connect_connect_db.php';
     $sql = "INSERT INTO package(package_name, package_price, package_validity, package_cdate) VALUES ('$package_name', '$package_price', '$package_validity','$package_cdate');";
     $conn = connection();
     $conn->query($sql);
@@ -82,39 +82,40 @@ function addPackage()
 
 function addTimeslote()
 {
-    date_default_timezone_set("Asia/Kolkata");
-    $timeslote_time    =  $_POST['timeslote_time'];
-    $timeslote_cdate =              date("m/d/Y");
-    require_once 'db.php';
+    date_default_timezone_set("Asia/Ho_Chi_minh");
+    $timeslote_time = $_POST['timeslot'];
+    $timeslote_cdate = date("m/d/Y");
+    require_once 'connect_db.php';
     $sql = "INSERT INTO timeslote(timeslote_time,timeslote_cdate) VALUES ('$timeslote_time', '$timeslote_cdate');";
-    $retval = mysqli_query($conn, $sql);
+    $conn = connection();
+    $conn-> query($sql);
 
-    //  if(! $retval ) {
-    //     die('Could not get data: ' . $conn->error);
-    //  }   
+     if($conn->affected_rows != 1) {
+        die('Could not get data: ' . $conn->error);
+     }   
 
-    header('location: timeslote-list.php');
+    header('location: timeslot_list.php');
 }
 
 function addTrainer()
 {
-    date_default_timezone_set("Asia/Kolkata");
-    $trainer_fname    =  $_POST['trainer_fname'];
-    $trainer_lname    =  $_POST['trainer_lname'];
-    $trainer_email    =  $_POST['trainer_email'];
-    $trainer_contact    =  $_POST['trainer_contact'];
-    $trainer_aadhar    =  $_POST['trainer_aadhar'];
-    $trainer_time_id    =  $_POST['trainer_time_id'];
-    $trainer_address    =  $_POST['trainer_address'];
-    $trainer_cdate =              date("m/d/Y");
+    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    $trainer_fname    =  $_POST['trainerFname'];
+    $trainer_lname    =  $_POST['trainerLname'];
+    $trainer_email    =  $_POST['trainerEmail'];
+    $trainer_contact    =  $_POST['trainerContact'];
+    $trainer_time    =  $_POST['trainerTime'];
+    $trainer_address    =  $_POST['trainerAddress'];
+    $trainer_cdate = date("m/d/Y");
 
-    require_once 'db.php';
-    $sql = "INSERT INTO trainer(trainer_fname, trainer_lname, trainer_email, trainer_contact, trainer_aadhar, trainer_time_id, trainer_address, trainer_cdate) VALUES ('$trainer_fname', '$trainer_lname', '$trainer_email', '$trainer_contact', '$trainer_aadhar', '$trainer_time_id', '$trainer_address', '$trainer_cdate');;";
-    $retval = mysqli_query($conn, $sql);
+    require_once 'connect_db.php';
+    $sql = "INSERT INTO trainer(trainer_fname, trainer_lname, trainer_email, trainer_contact, trainer_timeslot, trainer_address, trainer_cdate) VALUES ('$trainer_fname', '$trainer_lname', '$trainer_email', '$trainer_contact', '$trainer_time', '$trainer_address', '$trainer_cdate')";
+    $conn = connection();
+    $conn->query($sql);
 
-    //  if(! $retval ) {
-    //     die('Could not get data: ' . $conn->error);
-    //  }   
+     if($conn->affected_rows != 1) {
+        die('Could not get data: ' . $conn->error);
+     }   
 
-    header('location: trainer-list.php');
+    header('location: trainer_list.php');
 }

@@ -31,9 +31,8 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Package Name</th>
-                                            <th>Package Price</th>
-                                            <th>Package Validity</th>
+                                            <th>Time slot time</th>
+                                            <th>Time slot create date</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -41,18 +40,17 @@
                                     <tbody>
                                         <?php
                                         require_once("connect_db.php");
-                                        $sql = "SELECT * FROM package";
+                                        $sql = "SELECT * FROM timeslote";
                                         $res = connection()->query($sql);
-                                        // package row
+                                        // timeslot row
                                         while ($row = $res->fetch_assoc()) {
                                         ?>
                                             <tr>
-                                                <td><?= $row['package_id'] ?></td>
-                                                <td><?= $row['package_name'] ?></td>
-                                                <td><?= $row['package_price'] ?></td>
-                                                <td><?= $row['package_validity'] ?></td>
-                                                <td><a href="edit_package.php?id=<?= $row['package_id'] ?>" class="btn btn-info btn-flat">Edit</a></td>
-                                                <td><a onClick="return confirm('Delete This Package?')" href="delete.php?packid=<?= $row['package_id'] ?>" class="btn btn-danger btn-flat">Delete</a></td>
+                                                <td><?= $row['timeslote_id'] ?></td>
+                                                <td><?= $row['timeslote_time'] ?></td>
+                                                <td><?= $row['timeslote_cdate'] ?></td>
+                                                <td><a href="edit_timeslot.php?id=<?= $row['timeslote_id'] ?>" class="btn btn-info btn-flat">Edit</a></td>
+                                                <td><a onClick="return confirm('Delete This Timeslot?')" href="delete.php?timeid=<?= $row['timeslote_id'] ?>" class="btn btn-danger btn-flat">Delete</a></td>
                                             </tr>
 
                                         <?php } ?>

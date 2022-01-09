@@ -3,7 +3,7 @@ if (isset($_REQUEST['id'])) {
     userDelete();
 }
 
-if (isset($_REQUEST['pakid'])) {
+if (isset($_REQUEST['packid'])) {
     packageDelete();
 }
 
@@ -11,7 +11,7 @@ if (isset($_REQUEST['timeid'])) {
     timesloteDelete();
 }
 
-if (isset($_REQUEST['trinid'])) {
+if (isset($_REQUEST['trainerid'])) {
     trinarDelete();
 }
 
@@ -20,7 +20,7 @@ function userDelete()
     $user_id = $_REQUEST['id'];
     date_default_timezone_set("Asia/Ho_Chi_Minh");
     $user_udate = date("m/d/yy");
-    require_once 'connect_db.php';
+    require_once 'connect_connect_db.php.php';
     $sql = "DELETE FROM users WHERE user_id = '$user_id' ";
     $conn = connection();
     $conn->query($sql);
@@ -34,54 +34,47 @@ function userDelete()
 
 function packageDelete()
 {
-    $package_id = $_REQUEST['pakid'];
-    date_default_timezone_set("Asia/Kolkata");
-    $package_udate =              date("m/d/yy");
-    $package_status = "0";
-    require_once 'db.php';
-    $sql = "UPDATE package SET package_status= '$package_status' , package_udate= '$package_udate' WHERE package_id = '$package_id' ";
-    $retval = mysqli_query($conn, $sql);
+    $package_id = $_REQUEST['packid'];
+    require_once 'connect_db.php';
+    $sql = "DELETE FROM package WHERE package_id = '$package_id' ";
+    $conn = connection();
+    $conn->query($sql);
 
-    // if(! $retval ) {
-    //    die('Could not get data: ' . mysql_error());
-    // }   
+    if($conn->affected_rows != 1) {
+       die('Could not get data: ' . $conn->error);
+    }   
 
-    header('location: package-list.php');
+    header('location: package_list.php');
 }
 
 function timesloteDelete()
 {
     $timeslote_id = $_REQUEST['timeid'];
-    date_default_timezone_set("Asia/Kolkata");
-    $timeslote_udate =              date("m/d/yy");
-    $timeslote_status = "0";
-    require_once 'db.php';
-    $sql = "UPDATE timeslote SET timeslote_status= '$timeslote_status' , timeslote_udate= '$timeslote_udate' WHERE timeslote_id = '$timeslote_id' ";
-    $retval = mysqli_query($conn, $sql);
+    require_once 'connect_db.php';
+    $sql = "DELETE FROM timeslote WHERE timeslote_id = '$timeslote_id'";
+    $conn = connection();
+    $conn->query($sql);
 
-    // if(! $retval ) {
-    //    die('Could not get data: ' . mysql_error());
-    // }   
+    if($conn->affected_rows != 1) {
+       die('Could not get data: ' . $conn->error);
+    }   
 
-    header('location: timeslote-list.php');
+    header('location: timeslot_list.php');
 }
 
 
 function trinarDelete()
 {
-    $trainer_id = $_REQUEST['trinid'];
-    date_default_timezone_set("Asia/Kolkata");
-    $trainer_udate =  date("m/d/yy");
-    $trainer_status = "0";
+    $trainer_id = $_REQUEST['trainerid'];
+    require_once 'connect_db.php';
 
-    require_once 'db.php';
+    $sql = "DELETE FROM trainer WHERE trainer_id = '$trainer_id'";
+    $conn = connection();
+    $conn->query($sql);
 
-    $sql = "UPDATE trainer SET trainer_status= '$trainer_status' , trainer_udate= '$trainer_udate' WHERE trainer_id = '$trainer_id' ";
-    $retval = mysqli_query($conn, $sql);
+    if($conn->affected_rows != 1) {
+       die('Could not get data: ' . $conn->error);
+    }   
 
-    // if(! $retval ) {
-    //    die('Could not get data: ' . mysql_error());
-    // }   
-
-    header('location: trainer-list.php');
+    header('location: trainer_list.php');
 }
