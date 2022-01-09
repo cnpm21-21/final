@@ -1,7 +1,6 @@
-<?php include("header.php") ;
-session_start();
-// print_r($_SESSION);
-
+<?php 
+include("header.php") ;
+require_once("check_session.php");
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">

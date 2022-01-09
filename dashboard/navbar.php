@@ -10,36 +10,6 @@
             </li>
         </ul>
 
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
-        </ul>
     </nav>
     <!-- /.navbar -->
 
@@ -52,12 +22,18 @@
             <span class="brand-text font-weight-light">DTX Gym</span>
         </a>
 
+        <?php 
+        require_once("connect_db.php");
+        $res = connection()->query("SELECT admin_picture as pic FROM admin");
+        $img = $res->fetch_assoc()['pic'];
+        ?>
+
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image" />
+                    <img src="../img/<?= $img ?>" class="img-circle elevation-2" alt="User Image" />
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Admin name</a>
@@ -174,22 +150,16 @@
                         </ul>
                     </li>
 
+                    <!-- profile admin-->
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-file-alt"></i>
-                            <p>Report</p>
+                        <a href="profile.php" class="nav-link">
+                            <i class="fas fa-user-cog"></i>
+                            <p>Profile</p>
                         </a>
                     </li>
 
-                    <!-- quản lí nhân viên -->
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-user-cog"></i>
-                            <p>User</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="logout.php" class="nav-link">
+                        <a href="../logout.php" class="nav-link">
                             <i class="fas fa-user-cog"></i>
                             <p>Logout</p>
                         </a>

@@ -1,4 +1,7 @@
-<?php include("header.php") ?>
+<?php 
+include("header.php") ;
+require_once("check_session.php");
+?>
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -25,22 +28,17 @@
                                         <input type="text" class="form-control" name="userLastname" id="userLastname" placeholder="Enter Last Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
+                                        <label for="userEmail">Email address</label>
                                         <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="Enter email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Contact number</label>
-                                        <input type="text" class="form-control" name="userContact" id="userContact" placeholder="Enter contact number">
+                                        <label for="userContact">Contact number</label>
+                                        <input type="number" class="form-control" name="userContact" id="userContact" placeholder="Enter contact number">
                                     </div>
                                     <!-- Date -->
                                     <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                            <input name="userDob" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
-                                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                            </div>
-                                        </div>
+                                        <label for="userDob">Date of Birth</label>
+                                        <input type="date" class="form-control" name="userDob" id="userDob" placeholder="Pick a day" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="userGender">Gender</label>
@@ -53,8 +51,8 @@
                                     <!-- select from db -->
                                     <?php
                                     require_once("connect_db.php");
-                                    $sql = 'SELECT * FROM trainer where trainer_status = 1';
-                                    $sql1 = 'SELECT * FROM timeslote where timeslote_status = 1';
+                                    $sql = 'SELECT * FROM trainer';
+                                    $sql1 = 'SELECT * FROM timeslote';
                                     $sql2 = 'SELECT * FROM package where package_status = 1';
 
                                     $res = connection()->query($sql);

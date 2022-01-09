@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['update_admin'])) {
+if (isset($_POST['admin_update'])) {
   adminUpdate();
 }
 
@@ -17,7 +17,7 @@ function adminUpdate()
   $c_image_temp = $_FILES['admin_picture']['tmp_name'];
 
   if ($c_image_temp != "") {
-    move_uploaded_file($c_image_temp, "../images/$c_image");
+    move_uploaded_file($c_image_temp, "../img/$c_image");
     $sql = "update admin set admin_name='$admin_name', admin_email= '$admin_email', admin_contact = '$admin_contact' , admin_picture= '$c_image'  where admin_id='$admin_id'";
 
     unlink("../images/$admin_oldgpic");
@@ -29,14 +29,11 @@ function adminUpdate()
   }
 
   require_once 'connect_db.php';
-  $retval = mysqli_query($conn, $sql);
-
-  //  if(! $retval ) {
-  //     die('Could not get data: ' . mysql_error());
-  //  }       // get id of the created user
-
+  $conn = connection();
+  $conn->query($sql);
   header('location: profile.php');
 }
+
 if (isset($_POST['btn_add'])) {
   changePassword();
 }

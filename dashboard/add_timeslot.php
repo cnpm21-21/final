@@ -1,4 +1,7 @@
-<?php include("header.php") ?>
+<?php 
+include("header.php") ;
+require_once("check_session.php");
+?>
 
 
 <body class="hold-transition sidebar-mini layout-fixed">
